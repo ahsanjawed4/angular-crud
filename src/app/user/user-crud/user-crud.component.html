@@ -1,0 +1,71 @@
+<form>
+  <div class="form-group">
+    <label for="email">Name</label>
+    <input
+      type="name"
+      [(ngModel)]="name"
+      [ngModelOptions]="{ standalone: true }"
+      name="name"
+      class="form-control"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      [ngModelOptions]="{ standalone: true }"
+      name="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Password</label>
+    <input
+      type="password"
+      [(ngModel)]="password"
+      [ngModelOptions]="{ standalone: true }"
+      name="password"
+      class="form-control"
+      id="password"
+      aria-describedby="emailHelp"
+      placeholder="Enter password"
+    />
+  </div>
+  <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
+</form>
+<div class="container my-5" *ngIf="user_data">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let user of user_data">
+              <th scope="row">{{user?.name | uppercase}}</th>
+              <td>{{user?.email | uppercase}}</td>
+              <td>{{user?.password ?? user?.role | uppercase}}</td>
+              <td>
+                <button (click)="set_user(user)">Edit</button>&nbsp;&nbsp;&nbsp;
+                <button (click)="delete_user(user)">Delete</button>&nbsp;&nbsp;&nbsp;
+                <button (click)="sergio('ahsan')">ahsan</button>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<h1>{{name}}</h1>
